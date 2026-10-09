@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Панель управления</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">ПАНЕЛЬ <span>УПРАВЛЕНИЯ</span></a>
+      <nav>
+        <a href="index.html">На главную сайт</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <h2 class="section-title">Входящие заявки</h2>
+    <p class="section-subtitle">Прямой вывод данных из таблицы PostgreSQL</p>
+    
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Имя</th>
+            <th>Контакты</th>
+            <th>Тариф</th>
+            <th>Комментарий</th>
+          </tr>
+        </thead>
+        <tbody id="leadsTableBody">
+          <!-- Рендер через JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    async function loadLeads() {
+      const response = await fetch('/api/leads');
+      const leads = await response.json();
+      const tbody = document.getElementById('leadsTableBody');
+      tbody.innerHTML = '';
+
+      if (leads.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 40px; color: #679BBF;">Список заявок пуст</td></tr>`;
+        return;
+      }
+
+      leads.forEach(lead => {
+        const date = new Date(lead.createdAt).toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="td-date">${date}</td>
+          <td style="font-weight: 700; color: #fff;">${lead.name}</td>
+          <td><span class="td-contact">${lead.contact}</span></td>
+          <td><span class="td-tariff ${lead.tariff === 'Бизнес' ? 'business' : ''}">${lead.tariff}</span></td>
+          <td style="color: rgba(255,255,255,0.75); font-weight: 300;">${lead.comment || '—'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    loadLeads();
+  </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Арсен Ишман | Full Stack Разработчик</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Шапка сайта -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">ARSEN<span>.DEV</span></a>
+      <nav>
+        <a href="#features-section">Преимущества</a>
+        <a href="#tariffs-section">Тарифы</a>
+        <!-- Кнопка админки проверяет статус перед переходом -->
+        <a href="#" id="admin-nav-link" onclick="checkAdminAccess(event)">Панель управления</a>
+      </nav>
+      <a href="#contact-section" class="btn-header">Обсудить проект</a>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- Hero Экран -->
+    <section class="hero">
+      <div class="badge"><span class="badge-dot"></span>Доступен для заказов под ключ</div>
+      <h1>Создаю высоконагруженные сайты <span>для продажи</span></h1>
+      <p>Привет, я <strong>Арсен Ишман</strong>, Full Stack разработчик. Проектирую быстрые интерфейсы, выстраиваю архитектуру на Node.js / Express и оптимизирую базы данных PostgreSQL.</p>
+      <div class="hero-btns">
+        <a href="#tariffs-section" class="btn-primary">Смотреть тарифы</a>
+        <a href="#features-section" class="btn-secondary">Технологии</a>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="features-section">
+      <h2 class="section-title">Почему мои сайты продают?</h2>
+      <p class="section-subtitle">Разработка ведется без тяжелых конструкторов, что дает максимальную скорость загрузки.</p>
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="card-num">01 / СКОРОСТЬ</div>
+          <h3>Чистый Node.js</h3>
+          <p>Никакого лишнего кода. Молниеносная генерация страниц повышает конверсию бизнеса и SEO.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-num">02 / АВТОМАТИЗАЦИЯ</div>
+          <h3>Telegram Интеграция</h3>
+          <p>Заявки не теряются в спаме. Мгновенные уведомления приходят прямо на ваш телефон.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-num">03 / НАДЕЖНОСТЬ</div>
+          <h3>Архитектура Postgres</h3>
+          <p>Профессиональное проектирование таблиц под данные клиентов, корзины и заказы.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section id="tariffs-section">
+      <h2 class="section-title" style="text-align: center;">Стоимость и сроки</h2>
+      <div class="tariffs-container">
+        <div class="tariff-card">
+          <div>
+            <h3>Эконом</h3>
+            <div class="price">15 000 ₽</div>
+            <div class="term">Срок: 1 неделя</div>
+            <p class="tariff-desc">Простой, чистый сайт на 3–5 страниц для быстрого старта продаж.</p>
+            <ul class="features-list">
+              <li>Адаптивная верстка (моб / пк)</li>
+              <li>Высокая скорость по PageSpeed</li>
+            </ul>
+          </div>
+          <button onclick="selectTariff('Эконом')" class="btn-secondary w-full">Выбрать тариф</button>
+        </div>
+        <div class="tariff-card featured">
+          <span class="badge-featured">Рекомендую</span>
+          <div>
+            <h3>Стандарт</h3>
+            <div class="price">35 000 ₽</div>
+            <div class="term">Срок: 2 недели</div>
+            <p class="tariff-desc">Оптимальный инструмент с автоматизацией и панелью управления.</p>
+            <ul class="features-list">
+              <li>Интеграция с Telegram Bot API</li>
+              <li>База данных PostgreSQL</li>
+              <li>Панель управления заказами</li>
+            </ul>
+          </div>
+          <button onclick="selectTariff('Стандарт')" class="btn-primary w-full">Выбрать тариф</button>
+        </div>
+        <div class="tariff-card">
+          <div>
+            <h3>Бизнес</h3>
+            <div class="price">50 000 ₽</div>
+            <div class="term">Срок: 30 дней</div>
+            <p class="tariff-desc">Сложный интернет-магазин с каталогом товаров и личным кабинетом.</p>
+            <ul class="features-list">
+              <li>Интерактивная корзина</li>
+              <li>Фильтрация и личный кабинет</li>
+            </ul>
+          </div>
+          <button onclick="selectTariff('Бизнес')" class="btn-secondary w-full">Выбрать тариф</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Форма -->
+    <section id="contact-section" class="form-section">
+      <h2 class="section-title">Начать работу</h2>
+      <form id="leadForm">
+        <div class="form-group">
+          <label>Ваше имя *</label>
+          <input type="text" id="name" required placeholder="Иван">
+        </div>
+        <div class="form-group">
+          <label>Способ связи (Telegram / Телефон) *</label>
+          <input type="text" id="contact" required placeholder="@username или +7...">
+        </div>
+        <div class="form-group">
+          <label>Интересующий тариф</label>
+          <select id="tariff">
+            <option value="Эконом">Эконом (15к)</option>
+            <option value="Стандарт" selected>Стандарт (35к)</option>
+            <option value="Бизнес">Бизнес (50к)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Краткое описание задачи</label>
+          <textarea id="comment" rows="4" placeholder="Какая стоит цель..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full">Отправить заявку</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Модальное окно авторизации -->
+  <div id="authModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="toggleAuthModal(false)">Закрыть</button>
+      <h3 style="margin-bottom: 20px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Вход в админку</h3>
+      <form id="loginForm" style="margin-top: 0; padding: 0; background: transparent; border: none;">
+        <div class="form-group">
+          <label>Введите пароль администратора</label>
+          <input type="password" id="adminPasswordInput" required placeholder="•••••">
+        </div>
+        <button type="submit" class="btn-primary w-full" style="padding: 12px;">Войти</button>
+      </form>
+    </div>
+  </div>
+
+  <footer style="cursor: pointer;" onclick="toggleAuthModal(true)">
+    &copy; 2026 Arsen Ishman. Все права защищены. <span style="opacity: 0.3;">| Панель</span>
+  </footer>
+
+  <script>
+    function selectTariff(name) {
+      document.getElementById('tariff').value = name;
+      document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Показ/скрытие модалки
+    function toggleAuthModal(show) {
+      const modal = document.getElementById('authModal');
+      if (show) modal.classList.add('active');
+      else modal.classList.remove('active');
+    }
+
+    // Проверка доступа при клике на "Панель управления" в меню
+    async function checkAdminAccess(event) {
+      event.preventDefault();
+      const response = await fetch('/api/auth/status');
+      const data = await response.json();
+      
+      if (data.isAdmin) {
+        window.location.href = '/admin.html'; // Если уже авторизован — пускаем
+      } else {
+        toggleAuthModal(true); // Если нет — требуем пароль
+      }
+    }
+
+    // Обработка ввода пароля
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const password = document.getElementById('adminPasswordInput').value;
+
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password })
+      });
+
+      if (response.ok) {
+        window.location.href = '/admin.html'; // Перенаправление при успехе
+      } else {
+        alert('Неверный пароль администратора!');
+      }
+    });
+
+    // Отправка лида
+    document.getElementById('leadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        contact: document.getElementById('contact').value,
+        tariff: document.getElementById('tariff').value,
+        comment: document.getElementById('comment').value
+      };
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        alert('Заявка успешно отправлена!');
+        document.getElementById('leadForm').reset();
+      } else {
+        alert('Ошибка при отправке.');
+      }
+    });
+
+    // Если пользователя перекинуло из-за отсутствия прав
+    if (window.location.hash === '#auth-required') {
+      toggleAuthModal(true);
+    }
+  </script>
+</body>
+</html>

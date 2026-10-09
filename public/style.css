@@ -1,0 +1,514 @@
+/* public/style.css */
+
+/* Импорт современного шрифта без засечек */
+@import url('https://googleapis.com');
+
+/* Базовые настройки и сброс дефолтной «хуйни» браузера */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #002B49; /* Фирменный глубокий синий */
+}
+
+body {
+    color: #FFF5E4; /* Кремовый текст */
+    min-h-screen: 100vh;
+    padding-bottom: 60px;
+}
+
+/* Шапка сайта */
+header {
+    sticky: top;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 43, 73, 0.85);
+    backdrop-filter: blur(12px); /* Эффект размытия сзади */
+    border-b: 1px solid rgba(103, 155, 191, 0.15);
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 70px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #C21525; /* Акцентный красный */
+}
+
+nav a {
+    color: #679BBF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 32px;
+    transition: color 0.2s ease;
+}
+
+nav a:hover, nav a.active {
+    color: #FFF5E4;
+}
+
+.btn-header {
+    background: #C21525;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-header:hover {
+    background: #6B0000;
+    box-shadow: 0 0 15px rgba(194, 21, 37, 0.4);
+}
+
+/* Главный контейнер содержимого */
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* Секция Hero (Главный экран) */
+.hero {
+    padding: 80px 0 120px 0;
+    max-width: 800px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(103, 155, 191, 0.1);
+    border: 1px solid rgba(103, 155, 191, 0.2);
+    border-radius: 100px;
+    color: #679BBF;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 28px;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+}
+
+.hero h1 {
+    font-size: 54px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+}
+
+.hero h1 span {
+    color: #C21525;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #679BBF;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.hero p strong {
+    color: #fff;
+    font-weight: 500;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-primary {
+    background: #C21525;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: #6B0000;
+    box-shadow: 0 8px 24px rgba(194, 21, 37, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid rgba(103, 155, 191, 0.3);
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #fff;
+}
+
+/* Секция Преимуществ */
+.section-title {
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: #679BBF;
+    margin-bottom: 48px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 120px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(103, 155, 191, 0.1);
+    padding: 32px;
+    border-radius: 12px;
+    transition: border 0.3s ease;
+}
+
+.feature-card:hover {
+    border-color: rgba(103, 155, 191, 0.3);
+}
+
+.card-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #C21525;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #679BBF;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Тарифная сетка */
+.tariffs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 120px;
+}
+
+.tariff-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(103, 155, 191, 0.15);
+    padding: 40px 32px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.tariff-card:hover {
+    border-color: rgba(103, 155, 191, 0.3);
+    transform: translateY(-4px);
+}
+
+/* Премиальный акцент на Стандарте */
+.tariff-card.featured {
+    background: rgba(194, 21, 37, 0.02);
+    border: 2px solid #C21525;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(194, 21, 37, 0.08);
+}
+
+.tariff-card.featured:hover {
+    box-shadow: 0 10px 40px rgba(194, 21, 37, 0.15);
+}
+
+.badge-featured {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #C21525;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.tariff-card h3 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 36px;
+    font-weight: 900;
+    color: #FFF5E4;
+}
+
+.term {
+    font-size: 13px;
+    color: #C21525;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.tariff-card.featured .term {
+    color: #fff;
+    background: rgba(194, 21, 37, 0.4);
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.tariff-desc {
+    font-size: 14px;
+    color: #679BBF;
+    line-height: 1.5;
+    margin: 24px 0;
+    font-weight: 300;
+}
+
+.features-list {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.features-list li {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 12px;
+    font-weight: 300;
+    display: flex;
+    gap: 8px;
+}
+
+.features-list li::before {
+    content: "—";
+    color: #679BBF;
+    font-weight: bold;
+}
+
+/* Форма заказа */
+.form-section {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(103, 155, 191, 0.15);
+    padding: 32px;
+    border-radius: 16px;
+    text-align: left;
+    margin-top: 32px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #679BBF;
+    margin-bottom: 6px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(103, 155, 191, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #C21525;
+}
+
+form textarea {
+    resize: none;
+}
+
+.w-full {
+    width: 100%;
+}
+
+/* Таблица админки */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(103, 155, 191, 0.2);
+    border-radius: 12px;
+    margin-top: 32px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+th, td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(103, 155, 191, 0.1);
+}
+
+th {
+    background: rgba(0, 0, 0, 0.2);
+    color: #679BBF;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.td-date {
+    font-family: monospace;
+    font-size: 12px;
+    color: #679BBF;
+}
+
+.td-contact {
+    background: rgba(103, 155, 191, 0.1);
+    color: #679BBF;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.td-tariff {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid rgba(103, 155, 191, 0.3);
+}
+
+.td-tariff.business {
+    border-color: #C21525;
+    color: #C21525;
+}
+
+/* Подвал */
+footer {
+    border-t: 1px solid rgba(103, 155, 191, 0.1);
+    padding: 24px 0;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(103, 155, 191, 0.5);
+    margin-top: 100px;
+}
+/* Стили для модального окна авторизации */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 14, 25, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+    background: #002B49;
+    border: 1px solid rgba(103, 155, 191, 0.2);
+    padding: 32px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.modal-close {
+    background: transparent;
+    color: #679BBF;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    float: right;
+}
+.modal-close:hover { color: #fff; }
